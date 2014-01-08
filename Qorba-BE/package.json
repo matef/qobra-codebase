@@ -2,13 +2,15 @@
   "name": "Qorba-BE",
   "version": "0.1.0",
   "description": "Qorba-BE",
-  "main": "hello-world-server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
   },
   "dependencies" : {
 		"express" : "*",
-		"mongodb" : "*"
+		"mongodb" : "*",
+		"mongoose" : "*",
+		"validator" : "*"
 	},
   "repository": "",
   "keywords": [
