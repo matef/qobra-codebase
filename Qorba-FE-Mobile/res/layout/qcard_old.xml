@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="3"
+    android:rowCount="3" 
+    >
+ 
+	<ImageView
+	    android:id="@+id/headIcon"
+	    android:layout_height="100dp"
+	    android:layout_width="100dp"
+	    android:src="@drawable/cardhead"
+	    android:maxHeight="15dp"
+	    android:maxWidth="20dp" />
+
+	<ImageView
+	    android:id="@+id/mainavIcon"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/mainav" />
+	
+	<ImageView
+	    android:id="@+id/mainavIcon2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/mainav" />
+	    
+ 
+<!-- 
+	<LinearLayout
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+	    <ImageView
+	    android:id="@+id/mainavIcon2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/mainav" />
+	    <TextView
+	    android:id="@+id/maindate"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="loza loza loaz loza loza loazloza loza loazloza loza loazloza loza loazloza loza loaz"
+	   />
+	    
+	    
+	    
+	</LinearLayout>
+ 
+ 
+	<AnalogClock
+	    android:id="@+id/analogClock1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/headIcon"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginBottom="64dp"
+	    android:layout_marginRight="62dp" />
+ -->
+
+
+</GridLayout>
