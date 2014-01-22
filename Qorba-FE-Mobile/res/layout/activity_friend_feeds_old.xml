@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+    
+<LinearLayout 
+    android:baselineAligned="false"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"    
+    android:orientation="horizontal" 
+    android:background="#F0F0F0" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        >
+
+       <com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ></com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid>
+        <com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ></com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="10dp" >
+       <com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ></com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid>
+        <com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ></com.qorba.fe.mobile.ui.component.QorbaSmallCardGrid>
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
