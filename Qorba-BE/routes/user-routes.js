@@ -1,29 +1,19 @@
 var User = require("../model/user");
 
-exports.listFriends = function(req,res){
-	var userid = req.body.userid;
-	User.findById(userid,function(err,user){
-		if(err){
-			console.log('retrieval error');
-			throw err;
-		}
-		console.log('current user is found');
-		console.log('current user has '+ user.friends.length +' friends');
-		
-		User.find({_id: {$in : user.friends}},function(err,users){
-			res.set('Content-Type', 'application/json');
-			res.json(users);
-		});
-	});
-};
 exports.view = function(req,res){
-	var userid = req.body.userid;
+	var userid = req.params.id;
 	User.findById(userid,function(err,user){
 		if(err){
 			console.log('retrieval error');
 			throw err;
 		}
-		console.log('current user is found');
+		if(!user){
+			console.log('no user found ... ');
+			res.set('Content-Type', 'application/json');
+			res.json('{result:"not found"}');
+			return;
+		}
+		console.log('current user is found'+JSON.stringify(user));
 		res.set('Content-Type', 'application/json');
 		res.json(user);
 	});
@@ -35,6 +25,7 @@ exports.update = function(req,res){
 };
 exports.create = function(req,res){
 	var requser = req.body;
+	console.log('user full name = '+requser.fullname);
 	var user = new User({
 		username : requser.username,
 		email : requser.email,
@@ -42,24 +33,48 @@ exports.create = function(req,res){
 		profileimg : requser.profileimg
 	});
 	user.save();
+
+	res.set('Content-Type', 'application/json');
+	res.json(user);
 };
 exports.addFriend = function(req,res){
-	var userid = req.body.userid;
+	var userid = req.params.id;
 	var friendid = req.body.friendid;
 	User.findById(userid,function(err,user){
 		if(err){
 			console.log('retrieval error');
 			throw err;
 		}
-		console.log('current user is found');
-		
 		if(user.friends instanceof Array){
 			user.friends.push(friendid);
 		}
 		else{
 			user.friends = [friendid];
 		}
-		res.set('Content-Type', 'application/json');
-		res.json('{status:done}');
+		user.save(function(err){
+			if(err){
+				console.log('retrieval error');
+				throw err;
+			}
+			console.log('new friend added successfully ...');
+			
+			res.set('Content-Type', 'application/json');
+			res.json('{status:done}');
+		});
+		
+	});
+};
+
+exports.listFriends = function(req,res){
+	var userid = req.params.id;
+	User.findById(userid,function(err,user){
+		if(err){
+			console.log('retrieval error');
+			throw err;
+		}
+		User.find({_id: {$in : user.friends}},function(err,users){
+			res.set('Content-Type', 'application/json');
+			res.json(users);
+		});
 	});
 };

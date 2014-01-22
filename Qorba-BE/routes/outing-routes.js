@@ -69,7 +69,7 @@ exports.update = function(req,res){
 		outing.update();
 	});
 };
-exports.save = function(req,res){
+exports.create = function(req,res){
 	var reqouting = req.body;
 	check(reqouting.outingdate, 'outingdate cannot be empty').notNull();
 	check(reqouting.outingdate,'outingdate is not valid').isDate();

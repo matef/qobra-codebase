@@ -1,8 +1,11 @@
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
+
 var express = require('express'),
 app = express(),
-site = require('../utils/site'),
-user = require('../model/user'),
-outing = require('../model/outing');
+siteRoute = require('./routes/site'),
+userRoute = require('./routes/user-routes'),
+outingRoute = require('./routes/outing-routes');
 
 
 //config
@@ -12,18 +15,23 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.static(__dirname + '/public'));
 
-
 //General
-app.get('/', site.index);
+app.get('/', siteRoute.index);
 
 //user
-app.all('/users', user.list);
-app.get('/user/:id', user.view);
-app.get('/user/:id/view', user.view);
-app.put('/user/:id/create', user.create);
-app.put('/user/:id/update', user.update);
+app.get('/user/:id', userRoute.view);
+app.put('/user', userRoute.create);
+app.post('/user/:id', userRoute.update);
+app.get('/user/:id/friend', userRoute.listFriends);
+app.post('/user/:id/friend/',userRoute.addFriend);
 
-//outing
+
+
+app.get('/outing/:id', outingRoute.view);
+app.put('/outing', outingRoute.create);
+app.post('/outing/:id', outingRoute.update);
+
+
 
 
 //listen
