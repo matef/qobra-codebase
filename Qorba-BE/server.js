@@ -8,6 +8,7 @@ userRoute = require('./routes/user-routes'),
 outingRoute = require('./routes/outing-routes');
 
 
+
 //config
 app.use(express.logger('dev'));
 app.use(express.cookieParser());
@@ -22,17 +23,16 @@ app.get('/', siteRoute.index);
 app.get('/user/:id', userRoute.view);
 app.put('/user', userRoute.create);
 app.post('/user/:id', userRoute.update);
-app.get('/user/:id/friend', userRoute.listFriends);
-app.post('/user/:id/friend/',userRoute.addFriend);
 
+app.get('/user/:id/friends', userRoute.listFriends);
+app.post('/user/:id/friend/',userRoute.addFriend);
 
 
 app.get('/outing/:id', outingRoute.view);
 app.put('/outing', outingRoute.create);
 app.post('/outing/:id', outingRoute.update);
 
-
-
+app.get('/user/:id/outings',outingRoute.listUserOutings);
 
 //listen
 app.listen(3000);
