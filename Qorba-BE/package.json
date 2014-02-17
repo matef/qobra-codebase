@@ -10,7 +10,9 @@
 		"express" : "*",
 		"mongodb" : "*",
 		"mongoose" : "*",
-		"validator" : "*"
+		"validator" : "*",
+		"passport" : "*",
+		"passport-http":"*"
 	},
   "repository": "",
   "keywords": [

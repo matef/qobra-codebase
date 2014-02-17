@@ -37,7 +37,21 @@ var userRoutes = {
 
 		res.set('Content-Type', 'application/json');
 		res.json(user);
-	},
+	},	
+	createPassword : function(req,res){
+		var userid = req.params.id;
+		var password = req.body.password;
+		User.findById(userid, function(err, user) {
+			if (err) {
+				console.log('retrieval error');
+				throw err;
+			}
+			user.qaccount.password = password;
+			user.save();
+			res.set('Content-Type', 'application/json');
+			res.json(user);
+		});
+	},	
 	addFriend : function(req, res) {
 		var userid = req.params.id;
 		var friendid = req.body.friendid;
@@ -81,6 +95,8 @@ var userRoutes = {
 			});
 		});
 	}
+	
+	
 };
 
 // export an object for single tone pattern
